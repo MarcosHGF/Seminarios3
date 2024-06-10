@@ -4,14 +4,17 @@ function navigateTo(page) {
 
 function filterItems() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const gridItems = document.getElementsByClassName('grid-item');
+    const gridItems = document.getElementsByClassName('grid-item-id');
 
     for (let i = 0; i < gridItems.length; i++) {
-        const itemText = gridItems[i].getElementsByTagName('span')[0].textContent.toLowerCase();
-        if (itemText.includes(searchInput)) {
-            gridItems[i].style.display = '';
+        const item = gridItems[i];
+        const itemId = item.id.toLowerCase();
+
+        // Usando if para verificar se o itemId contém o valor de searchInput
+        if (itemId.includes(searchInput)) {
+            item.style.display = 'block'; // Exibir o item
         } else {
-            gridItems[i].style.display = 'none';
+            item.style.display = 'none'; // Ocultar o item
         }
     }
 }

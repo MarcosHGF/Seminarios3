@@ -57,6 +57,7 @@ input[type="text"] {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .grid-item-id img {
@@ -66,9 +67,20 @@ input[type="text"] {
     margin-bottom: 5px;
 }
 
+.grid-item-id img:hover {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
 .grid-item-id span {
     color: #333;
     font-size: 16px;
+}
+
+.grid-item-id:hover{
+    background-color: #c0c0c0;
 }
 
 .settings {
