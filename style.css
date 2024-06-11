@@ -22,9 +22,15 @@ h1 {
 input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: none;
     border-radius: 5px;
+}
+
+#searchResults {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .grid {
@@ -43,6 +49,8 @@ input[type="text"] {
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .grid-item:hover {
@@ -50,33 +58,34 @@ input[type="text"] {
 }
 
 .grid-item-id {
-    width: 45%;
-    height: 100px;
     background-color: #d3d3d3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 10px;
+    padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .grid-item-id img {
+    width: 100px;
+    height: 100px;
     max-width: 100%;
-    max-height: 80px;
-    object-fit: contain;
-    margin-bottom: 5px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    transition: transform 0.3s ease;
 }
 
 .grid-item-id img:hover {
-    max-width: 100%;
-    max-height: 300px;
-    object-fit: contain;
-    margin-bottom: 5px;
+    transform: scale(1.2);
 }
 
 .grid-item-id span {
+    display: block;
     color: #333;
     font-size: 16px;
+    text-align: center;
 }
 
 .grid-item-id:hover{
@@ -99,6 +108,11 @@ input[type="text"] {
 
 .settings span {
     font-size: 18px;
+}
+
+a{
+    color: inherit; /* Remove a cor azul padrão dos links */
+    text-decoration: none; /* Remove o sublinhado dos links */
 }
 
 @media (max-width: 600px) {

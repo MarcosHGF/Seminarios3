@@ -2,19 +2,50 @@ function navigateTo(page) {
     window.location.href = page;
 }
 
+function fetchPage(url) {
+    return fetch(url).then(response => response.text());
+}
+
+function parseHTML(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    return doc;
+}
+
 function filterItems() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const gridItems = document.getElementsByClassName('grid-item-id');
+    const searchResults = document.getElementById('searchResults');
+    searchResults.innerHTML = '';
 
-    for (let i = 0; i < gridItems.length; i++) {
-        const item = gridItems[i];
-        const itemId = item.id.toLowerCase();
+    const pages = ['escola.html']; // Adicione aqui as páginas que deseja pesquisar
 
-        // Usando if para verificar se o itemId contém o valor de searchInput
-        if (itemId.includes(searchInput)) {
-            item.style.display = 'block'; // Exibir o item
-        } else {
-            item.style.display = 'none'; // Ocultar o item
-        }
+    if (searchInput === '') {
+        // Se o campo de pesquisa estiver vazio, não exibe nenhum item
+        searchResults.textContent = 'Nenhum ID correspondente encontrado';
+        return;
     }
+
+    // Filtrar itens com base no valor do campo de entrada
+    let promises = pages.map(page => fetchPage(page));
+
+    Promise.all(promises).then(responses => {
+        responses.forEach(response => {
+            const doc = parseHTML(response);
+            const gridItems = doc.getElementsByClassName('grid-item-id');
+
+            Array.from(gridItems).forEach(item => {
+                const itemId = item.id.toLowerCase();
+
+                if (itemId.includes(searchInput)) {
+                    searchResults.appendChild(item.cloneNode(true));
+                }
+            });
+        });
+
+        if (!searchResults.hasChildNodes()) {
+            searchResults.textContent = 'Nenhum ID correspondente encontrado';
+        }
+    }).catch(error => {
+        console.error('Error fetching pages:', error);
+    });
 }
