@@ -17,7 +17,7 @@ function filterItems() {
     const searchResults = document.getElementById('searchResults');
     searchResults.innerHTML = '';
 
-    const pages = ['escola.html']; // Adicione aqui as páginas que deseja pesquisar
+    const pages = ['escola.html', 'saudacoes.html', 'numeros.html', 'lojas.html', 'hospital.html', 'alfabeto.html']; // Adicione aqui as páginas que deseja pesquisar
 
     if (searchInput === '') {
         // Se o campo de pesquisa estiver vazio, não exibe nenhum item
