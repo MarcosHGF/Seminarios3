@@ -103,10 +103,16 @@ input[type="text"] {
 .credits {
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: white;
+}
+
+.credits a {
+    display: block;
+    margin-bottom: 10px;
 }
 
 .settings img {
@@ -120,8 +126,8 @@ input[type="text"] {
 }
 
 a{
-    color: inherit; /* Remove a cor azul padrão dos links */
-    text-decoration: none; /* Remove o sublinhado dos links */
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (max-width: 600px) {

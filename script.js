@@ -20,12 +20,10 @@ function filterItems() {
     const pages = ['escola.html', 'saudacoes.html', 'numeros.html', 'lojas.html', 'hospital.html', 'alfabeto.html']; // Adicione aqui as páginas que deseja pesquisar
 
     if (searchInput === '') {
-        // Se o campo de pesquisa estiver vazio, não exibe nenhum item
         searchResults.textContent = 'Nenhum ID correspondente encontrado';
         return;
     }
 
-    // Filtrar itens com base no valor do campo de entrada
     let promises = pages.map(page => fetchPage(page));
 
     Promise.all(promises).then(responses => {
